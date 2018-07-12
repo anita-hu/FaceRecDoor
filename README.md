@@ -1,4 +1,4 @@
-# Face Recognition Door Lock w/ Opencv & Arduino
+# Face Recognition Door Lock
 ## Set up
 1. Run initdb.py to create sqlite database
 2. Connect your Arduino UNO (connect servo to D9)
