@@ -20,11 +20,12 @@ def addPerson():
     conn = sqlite3.connect('database.db')
     if not os.path.exists('./dataset'):
         os.makedirs('./dataset')
-        c = conn.cursor()
-        uname = e1.get() #Get value from name entry
-        c.execute('INSERT INTO users (name) VALUES (?)', (uname,))
-        uid = c.lastrowid
-        sampleNum = 0
+        
+    c = conn.cursor()
+    uname = e1.get() #Get value from name entry
+    c.execute('INSERT INTO users (name) VALUES (?)', (uname,))
+    uid = c.lastrowid
+    sampleNum = 0
 
     while True:
         img = getFrame()
