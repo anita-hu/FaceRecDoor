@@ -54,25 +54,24 @@ def Detector(frame):
     fname = "recognizer/trainingData.yml"
     if not os.path.isfile(fname):
         write("Please add one person first")
-        exit(0)
+    else:
+        face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+        recognizer = cv2.face.LBPHFaceRecognizer_create()
+        recognizer.read(fname)
 
-    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-    recognizer = cv2.face.LBPHFaceRecognizer_create()
-    recognizer.read(fname)
-
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-    for (x,y,w,h) in faces:
-        cv2.rectangle(frame,(x,y),(x+w,y+h),(0,255,0),3)
-        ids,conf = recognizer.predict(gray[y:y+h,x:x+w])
-        c.execute("select name from users where id = (?);", (ids,))
-        result = c.fetchall()
-        name = result[0][0]
-        if conf < 50:
-            ser.write(b'1')
-            write('Welcome %s! Door unlocked.' % (name))
-        else:
-            write('Unknown person!')
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+        for (x,y,w,h) in faces:
+            cv2.rectangle(frame,(x,y),(x+w,y+h),(0,255,0),3)
+            ids,conf = recognizer.predict(gray[y:y+h,x:x+w])
+            c.execute("select name from users where id = (?);", (ids,))
+            result = c.fetchall()
+            name = result[0][0]
+            if conf < 50:
+                ser.write(b'1')
+                write('Welcome %s! Door unlocked.' % (name))
+            else:
+                write('Unknown person!')
 
 def Lock():
     # open port if not already open
