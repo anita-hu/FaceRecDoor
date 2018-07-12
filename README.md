@@ -11,7 +11,6 @@
 Press 'Unlock'/'Lock' to unlock/lock door (by changing servo position).
 
 ![Pic of unlocked lock](images/Locked.jpg)
-![Pic of GUI](images/GUI.png)
 ![Pic of locked lock](images/Unlocked.jpg)
 
 ## References
