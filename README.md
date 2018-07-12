@@ -10,9 +10,9 @@
 ## Usage
 Press 'Unlock'/'Lock' to unlock/lock door (by changing servo position).
 
-![Pic of unlocked lock](https://github.com/anita-hu/FaceRecDoor/master/images/Locked.jpg)
+![Pic of unlocked lock](images/Locked.jpg)
 
-![Pic of locked lock](https://github.com/anita-hu/FaceRecDoor/master/images/Unlocked.jpg)
+![Pic of locked lock](images/Unlocked.jpg)
 
 ## References
 [Opencv Face Recognition](https://github.com/Aryal007/opencv_face_recognition)
